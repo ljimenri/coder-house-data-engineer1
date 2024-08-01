@@ -1,0 +1,27 @@
+1) Generar Entorno con virutalEnv:
+
+    virtualenv -p python3 env
+
+2) Activar virtual env:
+
+    source env/bin/activate
+
+3) Desactivar entorno virutal
+
+    deactivate
+
+4) Generar archivo requirements
+
+    pip freeze > requirements.txt
+
+5) Instalar lo que tiene el archivo requirements
+
+    pip install -r requirements.txt
+
+6) Instalar libreria request:
+
+    pip install requests --upgrade
+
+7) verificar instalacion de librerias
+
+    pip list
