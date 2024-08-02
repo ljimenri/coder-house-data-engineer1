@@ -1,7 +1,7 @@
 import requests
 from dotenv import load_dotenv
 import os
-import json
+
 def getToken():
     # Carga de variables de entorno
     load_dotenv()
@@ -25,9 +25,9 @@ def getToken():
     else:
         print(f"Error en la Api: no se ha podido obtener token")
 
-def callApi(token):
+def callApi(token, artist):
     # Datos del cuerpo de la solicitud
-    url="https://api.spotify.com/v1/artists/4Z8W4fKeB5YxbusRsdQVPb"
+    url="https://api.spotify.com/v1/artists/"+artist
     header_value="Bearer"+" "+token
     headers = {
     "Authorization": header_value
