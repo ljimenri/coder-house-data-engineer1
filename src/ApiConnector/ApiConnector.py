@@ -1,6 +1,7 @@
 import requests
 from dotenv import load_dotenv
 import os
+import json
 def getToken():
     
     load_dotenv()
@@ -21,7 +22,21 @@ def getToken():
 
     response = requests.post(url, headers=headers, data=data)
     if response.status_code == 200:
-        return response.json()
+        token = response.json().get('access_token')
+        return token
     else:
         print(f"Error en la Api: no se ha podido obtener token")
 
+def callApi(token):
+    url="https://api.spotify.com/v1/artists/4Z8W4fKeB5YxbusRsdQVPb"
+    header_value="Bearer"+" "+token
+    headers = {
+    "Authorization": header_value
+    }
+    response=requests.get(url, headers=headers)
+    if response.status_code == 200:
+        return_api = response.json()
+        return return_api
+    else:
+        print(f"Error en la solicitud: {response.status_code}")
+        print(response.text)

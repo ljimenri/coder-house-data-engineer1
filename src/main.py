@@ -1,8 +1,7 @@
-from ApiConnector.ApiConnector import getToken
+from ApiConnector.ApiConnector import getToken, callApi
 
 def main():
-    token=getToken()
-    print(token)
+    print(callApi(getToken()))
 
 if __name__ == "__main__":
     main()
