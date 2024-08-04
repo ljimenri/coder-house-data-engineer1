@@ -1,9 +1,11 @@
 import os
 import psycopg2
+from dotenv import load_dotenv
 
 def DataBaseConnection():
     connection = None
     cursor = None
+    load_dotenv()
     try:
         # Establecer la conexión a la base de datos
         connection = psycopg2.connect(
@@ -18,7 +20,7 @@ def DataBaseConnection():
         cursor = connection.cursor()
 
         # Ejecutar una consulta de prueba
-        cursor.execute("SELECT version();")
+        cursor.execute("select * from persona p")
         version = cursor.fetchone()
         print(f"Conectado a: {version}")
 
