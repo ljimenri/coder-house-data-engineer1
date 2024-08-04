@@ -7,6 +7,7 @@ def favoriteArtists():
 
 def extractData(token, artists):
     list_of_artist = []
+    print("[INFO] Obteniendo datos de los artistas desde Spotify API")
     for artist in artists:
         artist_table = {
             "name": callApi(token,artist).get("name"),
@@ -14,4 +15,5 @@ def extractData(token, artists):
             "followers": callApi(token,artist).get("followers", {}).get("total"),
         }
         list_of_artist.append(artist_table)
+    print("[INFO] Informacion obtenida!")
     return list_of_artist
