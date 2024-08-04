@@ -2,12 +2,11 @@ import os
 import psycopg2
 from dotenv import load_dotenv
 
-def DataBaseConnection():
+def CreateTableArtists():
     connection = None
     cursor = None
     load_dotenv()
     try:
-        # Establecer la conexión a la base de datos
         connection = psycopg2.connect(
             dbname=os.getenv('NAME_DATABASE'),
             user=os.getenv('NAME_USER_DATABASE'),
@@ -15,25 +14,19 @@ def DataBaseConnection():
             host=os.getenv('HOST_DATABASE'),
             port=os.getenv('PORT_DATABASE')
         )
-
-        # Crear un cursor
         cursor = connection.cursor()
-
-        # Ejecutar una consulta de prueba
-        cursor.execute("select * from persona p")
-        version = cursor.fetchone()
-        print(f"Conectado a: {version}")
-
+        create_table_query="CREATE TABLE IF NOT EXISTS luisjimenezrivas_coderhouse.artists (id INTEGER IDENTITY(1,1) PRIMARY KEY, name VARCHAR(255) NOT NULL,popularity INT,followers INT);"
+        cursor.execute(create_table_query)
+        connection.commit()
     except Exception as e:
-        print(f"Error al conectar: {e}")
+        print(f"no se pudo crear la tabla")
 
     finally:
-        # Cerrar el cursor si fue creado
         if cursor is not None:
             cursor.close()
-
-        # Cerrar la conexión si fue creada
         if connection is not None:
             connection.close()
             print("Conexión cerrada")
 
+def InsertTableArtists():
+    print("Insertar datos a la tabla")
