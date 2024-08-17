@@ -34,3 +34,16 @@ def callApi(token, artist):
         return return_api
     else:
         print(f"[ERROR] Error en la solicitud:{response.status_code}")
+
+def getAlbumAPI(token, album):
+    url="https://api.spotify.com/v1/albums/"+album
+    header_value="Bearer"+" "+token
+    headers = {
+    "Authorization": header_value
+    }
+    response=requests.get(url, headers=headers)
+    if response.status_code == 200:
+        return_api_album = response.json()
+        return return_api_album
+    else:
+        print(f"[ERROR] Error en la solicitud:{response.status_code}")

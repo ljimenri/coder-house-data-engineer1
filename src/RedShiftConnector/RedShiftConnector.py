@@ -16,7 +16,7 @@ def CreateTableArtists():
             port=os.getenv('PORT_DATABASE')
         )
         cursor = connection.cursor()
-        create_table_query="CREATE TABLE IF NOT EXISTS luisjimenezrivas_coderhouse.artists (id INTEGER IDENTITY(1,1) PRIMARY KEY, name VARCHAR(255) NOT NULL,popularity INT,followers INT);"
+        create_table_query="CREATE TABLE IF NOT EXISTS luisjimenezrivas_coderhouse.artists (id INTEGER IDENTITY(1,1) PRIMARY KEY, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, name VARCHAR(255) NOT NULL,popularity INT,followers INT, images VARCHAR(255) NOT NULL, type VARCHAR(255) NOT NULL, genre VARCHAR(255) NOT NULL);"
         cursor.execute(create_table_query)
         connection.commit()
         print("[INFO] Tabla creada!")
@@ -35,10 +35,10 @@ def InsertTableArtists(list_of_artists):
     connection = None
     cursor = None
     load_dotenv()
-    list_of_tuples = [(artist["name"], artist["popularity"], artist["followers"]) for artist in list_of_artists]
+    list_of_tuples = [(artist["created_at"], artist["name"], artist["popularity"], artist["followers"], artist["images"], artist["type"],artist["genre"], ) for artist in list_of_artists]
     insert_query = """
-    INSERT INTO luisjimenezrivas_coderhouse.artists (name, popularity, followers)
-    VALUES (%s, %s, %s);
+    INSERT INTO luisjimenezrivas_coderhouse.artists (created_at, name, popularity, followers, images, type, genre)
+    VALUES (%s, %s, %s, %s, %s, %s, %s);
     """
     try:
         connection = psycopg2.connect(
