@@ -4,10 +4,8 @@ from RedShiftConnector.RedShiftConnector import CreateTableArtists, InsertTableA
 
 
 def main():
-   #CreateTableArtists()
-   #InsertTableArtists(extractData(getToken(),favoriteArtists()))
-   #extractDataAlbum(getToken(),favoriteAlbum())
-   print(joinDataArtistWithAlbum(extractData(getToken(),favoriteArtists()), extractDataAlbum(getToken(),favoriteAlbum())))
-
+   CreateTableArtists()
+   InsertTableArtists(joinDataArtistWithAlbum(extractData(getToken(),favoriteArtists()), extractDataAlbum(getToken(),favoriteAlbum())))
+   
 if __name__ == "__main__":
     main()

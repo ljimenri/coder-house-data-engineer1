@@ -57,6 +57,7 @@ def extractDataAlbum(token, albums):
         }
         list_of_albums.append(albums_table)
     return list_of_albums
+
 def joinDataArtistWithAlbum(artists, albums):
     df_artists = pd.DataFrame(artists)
     df_albums = pd.DataFrame(albums)
