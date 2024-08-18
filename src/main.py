@@ -7,7 +7,7 @@ def main():
    #CreateTableArtists()
    #InsertTableArtists(extractData(getToken(),favoriteArtists()))
    #extractDataAlbum(getToken(),favoriteAlbum())
-   joinDataArtistWithAlbum(extractData(getToken(),favoriteArtists()), extractDataAlbum(getToken(),favoriteAlbum()))
+   print(joinDataArtistWithAlbum(extractData(getToken(),favoriteArtists()), extractDataAlbum(getToken(),favoriteAlbum())))
 
 if __name__ == "__main__":
     main()

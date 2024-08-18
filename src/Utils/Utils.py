@@ -4,10 +4,26 @@ from datetime import datetime
 import pandas as pd
 
 def favoriteArtists():
-    artists = deque(["6qqNVTkY8uBg9cP3Jd7DAH", "25uiPmTg16RbhZWAqwLBy5"])
+    artists = deque(["6qqNVTkY8uBg9cP3Jd7DAH", 
+                     "25uiPmTg16RbhZWAqwLBy5",
+                     "163tK9Wjr9P9DmM0AVK7lm",
+                     "00FQb4jTyendYWaN8pK0wa",
+                     "3l0CmX0FuQjFxr8SK7Vqag",
+                     "0NB5HROxc8dDBXpkIi1v3d",
+                     "0Cp8WN4V8Tu4QJQwCN5Md4",
+                     "7GlBOeep6PqTfFi59PTUUN",
+                     ])
     return artists
 def favoriteAlbum():
-    albums = deque(["0S0KGZnfBGSIssfF54WSJh", "2lIZef4lzdvZkiiCzvPKj7"])
+    albums = deque(["0S0KGZnfBGSIssfF54WSJh", 
+                    "2lIZef4lzdvZkiiCzvPKj7",
+                    "2B87zXm9bOWvAJdkJBTpzF",
+                    "1ORxRsK3MrSLvh7VQTF01F",
+                    "4kkVGtCqE2NiAKosri9Rnd",
+                    "7HQOEMCDGKY8eJyQPdsnYH",
+                    "3ZJSoxsPMkNC9eb6gUn0Q8",
+                    "0EiI8ylL0FmWWpgHVTsZjZ",
+                    ])
     return albums
 
 def extractData(token, artists):
@@ -44,8 +60,4 @@ def extractDataAlbum(token, albums):
 def joinDataArtistWithAlbum(artists, albums):
     df_artists = pd.DataFrame(artists)
     df_albums = pd.DataFrame(albums)
-    print(df_artists)
-    print(df_albums)
-    result = pd.merge(df_artists, df_albums, on='name', how='inner')
-    print(result)
-    print(result.columns.tolist())
+    return pd.merge(df_artists, df_albums, on='name', how='inner')
