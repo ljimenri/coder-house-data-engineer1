@@ -16,4 +16,4 @@ Para levantar el proyecto ejecutar el siguiente comando en la carpeta raiz:
 ```bash
 docker compose up
 ```
-Observación: Me ocurrió en oportunidad que los logs no mostraban la contraseña para ingresar a la consola de Airflow, se soluciona haciendo re intentos de login.
+Observación: Me ocurrió en una oportunidad que los logs no mostraban la contraseña para ingresar a la consola de Airflow, se soluciona haciendo re intentos de login.
