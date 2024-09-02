@@ -16,9 +16,3 @@ Para levantar el proyecto ejecutar el siguiente comando en la carpeta raiz:
 ```bash
 docker compose up
 ```
-
-
-## Authors
-
-- [@ljimenri](https://www.github.com/)
-
