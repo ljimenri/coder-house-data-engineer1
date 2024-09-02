@@ -25,3 +25,7 @@
 7) verificar instalacion de librerias
 
     pip list
+
+8) Ejecutar Docker Compose
+
+    docker compose up
