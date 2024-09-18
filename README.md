@@ -17,13 +17,13 @@ Para levantar el proyecto ejecutar el siguiente comando en la carpeta raiz:
 docker compose up
 ```
 Observación 1: Me ocurrió en una oportunidad que los logs no mostraban la contraseña para ingresar a la consola de Airflow, se soluciona haciendo re intentos de login.<br>
-Observación 2: Se utilizó el siguiente correo andru.ocatorres@gmail.com como mail de destino para el envío de alertas, en caso de querer modificarlo se tiene que agregar en el archivo:
+Observación 2: Se utilizó el siguiente correo andru.ocatorres@gmail.com como mail de destino para el envío de alertas, en caso de querer modificarlo se tiene que modificar el archivo:
 
 ```bash
 .env
 ```
 
-en la linea que define la variable EMAIL_TO_ADDRESS
+en la linea 10 que define la variable EMAIL_TO_ADDRESS
 
 ```bash
 EMAIL_TO_ADDRESS=nuevo_mail
