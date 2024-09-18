@@ -27,5 +27,9 @@ with DAG(
         task_id="insert_table_artists",
         python_callable=insert_table
         )
+    send_email = PythonOperator(
+        task_id="mail_sender",
+        python_callable=sendEmail,
+    )
 
 create_table_artists >> insert_table_artists >> send_email
