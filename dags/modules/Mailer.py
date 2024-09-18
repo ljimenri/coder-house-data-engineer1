@@ -1,12 +1,15 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from dotenv import load_dotenv
+import os
 
 def sendEmailBeginning(**context):
-    subject = "Inicio de proceso ETL"
-    from_address = "email.de.ch.ljimenez@gmail.com"
-    password = "dfhhveivyfjrlcec"
-    to_address = "artybandy@gmail.com"
+    load_dotenv()
+    subject = "Status de proceso ETL"
+    from_address = os.getenv('EMAIL_FROM_ADDRESS')
+    password = os.getenv('EMAIL_PASSWORD')
+    to_address = os.getenv('EMAIL_TO_ADDRESS')
 
     msg = MIMEMultipart()
     msg['From'] = from_address
@@ -83,10 +86,11 @@ def sendEmailBeginning(**context):
 
 
 def sendEmailEnd(**context):
-    subject = "Inicio de proceso ETL"
-    from_address = "email.de.ch.ljimenez@gmail.com"
-    password = "dfhhveivyfjrlcec"
-    to_address = "artybandy@gmail.com"
+    load_dotenv()
+    subject = "Status de proceso ETL"
+    from_address = os.getenv('EMAIL_FROM_ADDRESS')
+    password = os.getenv('EMAIL_PASSWORD')
+    to_address = os.getenv('EMAIL_TO_ADDRESS')
 
     msg = MIMEMultipart()
     msg['From'] = from_address
