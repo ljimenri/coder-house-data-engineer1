@@ -2,7 +2,7 @@
 import datetime as dt
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from modules import CreateTableArtists, InsertTableArtists, getToken, callApi, getAlbumAPI, favoriteArtists, extractData, extractDataAlbum, joinDataArtistWithAlbum,favoriteAlbum
+from modules import CreateTableArtists, InsertTableArtists, getToken, callApi, getAlbumAPI, favoriteArtists, extractData, extractDataAlbum, joinDataArtistWithAlbum,favoriteAlbum, sendEmail
 
 with DAG(
         dag_id="artist_etl",
@@ -14,7 +14,7 @@ with DAG(
 
 ) as my_dag:
     
-    def print_hello(**context):
+    def insert_table(**context):
         InsertTableArtists(joinDataArtistWithAlbum(extractData(getToken(),favoriteArtists()), extractDataAlbum(getToken(),favoriteAlbum())))
 
     create_table_artists = PythonOperator(
@@ -25,7 +25,7 @@ with DAG(
     insert_table_artists = PythonOperator(
         dag=my_dag,
         task_id="insert_table_artists",
-        python_callable=print_hello
+        python_callable=insert_table
         )
 
-create_table_artists >> insert_table_artists
+create_table_artists >> insert_table_artists >> send_email
